@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Demo</title>
+    
+</head>
+<body>
+   
+    <input type="number" id="saisie" onKeyPress="if(event.keyCode == 13) play();">
+    <br>
+    <p id="tentative"></p>
+    <br>
+    <p id="output"></p>
+
+    <script>
+        
+        function random(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min +1)) + min;
+        }
+
+        secret=random(0,100)
+        tentative=0
+
+        function play(){
+            tentative=tentative+1
+            document.getElementById("tentative").innerHTML=tentative
+            saisie=parseInt(document.getElementById("saisie").value);
+            if(saisie==secret){
+                document.getElementById("output").innerHTML="Vous avez gagné"
+            }else{
+              
+                if(saisie<secret){
+                    document.getElementById("output").innerHTML="+"
+                }else{
+                    document.getElementById("output").innerHTML="-"
+                }
+            }
+        }
+    
+    </script>
+</body>
+</html>
